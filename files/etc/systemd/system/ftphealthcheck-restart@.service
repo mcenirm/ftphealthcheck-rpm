@@ -1,0 +1,6 @@
+[Unit]
+Description=Restart service (%I)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl restart %i.service
