@@ -1,0 +1,12 @@
+[Unit]
+Description=Check health of local FTP service (%I)
+Wants=%i.service
+
+[Timer]
+OnBootSec=30min
+OnUnitInactiveSec=3h
+RandomizedDelaySec=180m
+Unit=ftphealthcheck@%i.service
+
+[Install]
+WantedBy=timers.target
