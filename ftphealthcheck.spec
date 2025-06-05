@@ -6,8 +6,9 @@ Summary:                 Check health of local FTP service
 License:                 AGPLv3
 
 BuildArch:               noarch
+BuildRequires:           systemd
 Requires:                lftp >= 4.8
-Requires:                systemd >= 239
+%{?systemd_requires}
 
 %description
 Tries to connect to a local FTP service, but if it fails,
@@ -35,7 +36,9 @@ exit 0
 %files
 %license LICENSE 
 %doc README 
-
+%config %{_sysconfdir}/ftphealthcheck.conf
+%config %{_sysconfdir}/files\etc\tmpfiles.d\ftphealthcheck.conf
+%config %{_prefix}/lib/systemd/system/
 %{_bindir}/%{name} 
 %{_mandir}/man5/%{name}.conf*
 
